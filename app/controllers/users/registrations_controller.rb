@@ -8,6 +8,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET '/users/sign_up'
   def new
     super
+    @user = "this"
+binding.pry
   end
 
   # POST '/users'
@@ -61,9 +63,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   private
-  
+
   def redirect_unless_admin
-    unless current_user.admin == true
+    unless current_user && current_user.admin == true
       redirect_to root_path, error: "You do not have permissions to access this part of the site"
     end
   end
