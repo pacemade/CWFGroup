@@ -12,6 +12,7 @@
     <nav>
       <ul class="nav">
         <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to "My Profile", current_user, :class => "nav-link" %></li>
           <li class="nav-item"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => "nav-link"  %></li>
           <% if current_user.admin == true %>
               <li class="nav-item"><%= link_to "Admin Panel", rails_admin_path, :class => "nav-link" %></li>
