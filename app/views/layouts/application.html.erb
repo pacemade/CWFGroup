@@ -10,6 +10,7 @@
 
   <body>
     <nav>
+      <h1><%= link_to 'CWF Group Insurance Calculator', root_path %></h1>
       <ul class="nav">
         <% if user_signed_in? %>
           <li class="nav-item"><%= link_to "My Profile", current_user, :class => "nav-link" %></li>
