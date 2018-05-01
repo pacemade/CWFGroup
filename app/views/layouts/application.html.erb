@@ -10,18 +10,34 @@
 
   <body>
     <nav>
-  <ul class="nav">
-      <% if user_signed_in? %>
-        <li class="nav-item"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => "nav-link"  %></li>
-        <% if current_user.admin == true %>
-            <li class="nav-item"><%= link_to "Admin Panel", rails_admin_path, :class => "nav-link" %></li>
-            <li class="nav-item"><%= link_to "Register New Advisor", new_user_registration_path, :class => "nav-link" %></li>
+      <ul class="nav">
+        <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => "nav-link"  %></li>
+          <% if current_user.admin == true %>
+              <li class="nav-item"><%= link_to "Admin Panel", rails_admin_path, :class => "nav-link" %></li>
+              <li class="nav-item"><%= link_to "Register New Advisor", new_user_registration_path, :class => "nav-link" %></li>
+          <% end %>
+        <% else %>
+          <li class="nav-item"><%= link_to "Login", new_user_session_path, :class => "nav-link"%></li>
         <% end %>
-      <% else %>
-        <li class="nav-item"><%= link_to "Login", new_user_session_path, :class => "nav-link"%></li>
+      </ul>
+    </nav>
+    <% if flash && flash.any?  %>
+      <% flash.each do |key, message| %>
+        <h4><% key %></h4>
+        <% if message && message.class != String && message.any?  %>
+          <% message.each do |sub_message|  %>
+          <div class="alert alert-primary">
+            <h5><%= sub_message %></h5>
+          </div>
+        <% end %>
+        <% else %>
+          <div class="alert alert-primary">
+            <h5><%= message %></h5>
+          </div>
+        <% end  %>
       <% end %>
-    </ul>
-  </nav>
+    <% end %>
     <%= yield %>
   </body>
 </html>
