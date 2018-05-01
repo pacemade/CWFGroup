@@ -3,31 +3,32 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :redirect_unless_admin
 
-  # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  # GET '/users/sign_up'
+  def new
+    super
+  end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+  # POST '/users'
+  def create
+    super
+  end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  # GET '/users/edit'
+  def edit
+    super
+  end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
+  # PUT '/users'
+  def update
+    super
+  end
 
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  # DELETE '/users'
+  def destroy
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -59,4 +60,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+  
+  def redirect_unless_admin
+    unless current_user.admin == true
+      redirect_to root_path, error: "You do not have permissions to access this part of the site"
+    end
+  end
+
 end
