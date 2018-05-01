@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CWFGroup</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+  <ul class="nav">
+      <% if user_signed_in? %>
+        <li class="nav-item"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => "nav-link"  %></li>
+        <% if current_user.admin == true %>
+            <li class="nav-item"><%= link_to "Add A Book", new_book_path, :class => "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Admin Panel", rails_admin_path, :class => "nav-link" %></li>
+        <% end %>
+      <% else %>
+        <li class="nav-item"><%= link_to "Register", new_user_registration_path, :class => "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Login", new_user_session_path, :class => "nav-link"%></li>
+      <% end %>
+    </ul>
+  </nav>
+    <%= yield %>
+  </body>
+</html>
