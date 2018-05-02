@@ -74,12 +74,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
-  def redirect_unless_admin
-    unless current_user && current_user.admin == true
-      redirect_to root_path, notice: "You do not have permissions to do that!"
-    end
-  end
-
   def registration_params
     params.require(:user).permit(:email, :display_name, :terms_of_services, :profile, :password, :password_confirmation, :first_name, :last_name)
   end

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :redirect_unless_admin, except: :show
+
   def index
     @users = User.all
   end
