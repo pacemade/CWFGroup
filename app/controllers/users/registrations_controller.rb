@@ -3,7 +3,10 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+
+  # This lets you register while logged in
   prepend_before_action :require_no_authentication, only: :cancel
+
   before_action :redirect_unless_admin
 
   # GET '/users/sign_up'
@@ -43,11 +46,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
-
-  # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
@@ -64,16 +62,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
+  # If you have extra params to permit, append them to the sanitizer.
+  # def configure_sign_up_params
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+  # end
+
+  # This stops app from logging you in automatically when registering a new account
   def sign_up(resource_name, resource)
     true
   end
-  
+
   private
 
   def redirect_unless_admin
     unless current_user && current_user.admin == true
       redirect_to root_path, notice: "You do not have permissions to do that!"
     end
+  end
+
+  def registration_params
+    params.require(:user).permit(:email, :display_name, :terms_of_services, :profile, :password, :password_confirmation, :first_name, :last_name)
   end
 
 end
