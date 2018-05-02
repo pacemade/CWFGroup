@@ -61,6 +61,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  protected
+
+  def sign_up(resource_name, resource)
+    true
+  end
+  
   private
 
   def redirect_unless_admin
