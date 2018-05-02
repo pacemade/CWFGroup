@@ -3,13 +3,12 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  prepend_before_action :require_no_authentication, only: :cancel
   before_action :redirect_unless_admin
 
   # GET '/users/sign_up'
   def new
     super
-    @user = "this"
-binding.pry
   end
 
   # POST '/users'
@@ -66,7 +65,7 @@ binding.pry
 
   def redirect_unless_admin
     unless current_user && current_user.admin == true
-      redirect_to root_path, error: "You do not have permissions to access this part of the site"
+      redirect_to root_path, notice: "You do not have permissions to do that!"
     end
   end
 
