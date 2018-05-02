@@ -67,9 +67,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
   # end
 
-  def update_resource(resource, params)
-   resource.update_without_password(params)
-  end
+  # edit without password confirmation
+  # def update_resource(resource, params)
+  #  resource.update_without_password(params)
+  # end
 
   # This stops app from logging you in automatically when registering a new account
   def sign_up(resource_name, resource)
