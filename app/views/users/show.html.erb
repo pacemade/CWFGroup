@@ -1,5 +1,3 @@
 <h2><%= @user.first_name %> <%= @user.last_name %></h2>
 
-<% if current_user.admin == true %>
-  <%= link_to "Edit Advisor", edit_user_registration_path(@user) %>  
-<% end %>
+<%= link_to 'Referral Link', new_user_trip_path(@user) %>
