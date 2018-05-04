@@ -1,6 +1,6 @@
 <h2>Book A Trip</h2>
 
-<%= form_for [@user, @trip] do |f| %>
+<%= form_for ([@user, @trip]) do |f| %>
 
   <%= f.label :first_name %>
   <%= f.text_field :first_name %>
@@ -12,10 +12,10 @@
   <%= f.datetime_select :birthday %>
 
   <%= f.label :start_date %>
-  <%= f.datetime_select :start_time :ampm => true, :minute_step => 15%>
+  <%= f.datetime_select :start_date, min: Date.today, :ampm => true, :minute_step => 15%>
 
   <%= f.label :end_date %>
-  <%= f.datetime_select :end_time :ampm => true, :minute_step => 15%>
+  <%= f.datetime_select :end_date, min: Date.today , :ampm => true, :minute_step => 15%>
 
   <%= f.submit 'See options!' %>
 

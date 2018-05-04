@@ -2,17 +2,19 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    @user = User.find(params[:user_id])
   end
 
   def create
     @user = User.find(params[:user_id])
     @trip = Trip.new(trip_params)
+    @trip.user = @user
 
     if @trip.save
       flash[:notice] = "Trip saved!"
-      redirect_to root
+      redirect_to root_path
     else
-      flash.now[:alert] = @tip.errors.full_messages
+      flash.now[:alert] = @trip.errors.full_messages
       render 'new'
     end
   end
