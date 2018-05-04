@@ -24,22 +24,24 @@
         <% end %>
       </ul>
     </nav>
-    <% if flash && flash.any?  %>
-      <% flash.each do |key, message| %>
-        <h4><% key %></h4>
-        <% if message && message.class != String && message.any?  %>
-          <% message.each do |sub_message|  %>
-          <div class="alert alert-primary">
-            <h5><%= sub_message %></h5>
-          </div>
+    <div class="container">
+      <% if flash && flash.any?  %>
+        <% flash.each do |key, message| %>
+          <h4><% key %></h4>
+          <% if message && message.class != String && message.any?  %>
+            <% message.each do |sub_message|  %>
+            <div class="alert alert-primary">
+              <h5><%= sub_message %></h5>
+            </div>
+          <% end %>
+          <% else %>
+            <div class="alert alert-primary">
+              <h5><%= message %></h5>
+            </div>
+          <% end  %>
         <% end %>
-        <% else %>
-          <div class="alert alert-primary">
-            <h5><%= message %></h5>
-          </div>
-        <% end  %>
       <% end %>
-    <% end %>
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>
