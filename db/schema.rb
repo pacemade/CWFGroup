@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180504135018) do
+ActiveRecord::Schema.define(version: 20180504162506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "policies", force: :cascade do |t|
+    t.integer "min_age"
+    t.integer "max_age"
+    t.decimal "cov_10k", precision: 15, scale: 15
+    t.decimal "cov_25k", precision: 15, scale: 15
+    t.decimal "cov_50k", precision: 15, scale: 15
+    t.decimal "cov_75k", precision: 15, scale: 15
+    t.decimal "cov_100k", precision: 15, scale: 15
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "trips", force: :cascade do |t|
     t.datetime "start_date"

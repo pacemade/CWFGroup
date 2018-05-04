@@ -24,7 +24,6 @@
         <% end %>
       </ul>
     </nav>
-    <div class="container">
       <% if flash && flash.any?  %>
         <% flash.each do |key, message| %>
           <h4><% key %></h4>
@@ -41,6 +40,7 @@
           <% end  %>
         <% end %>
       <% end %>
+    <div class="container">
       <%= yield %>
     </div>
   </body>
