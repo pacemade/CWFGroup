@@ -1,21 +1,21 @@
 <h2>Book A Trip</h2>
 
-<%= form_for ([@user, @trip]) do |f| %>
+<%= form_for ([@user, @trip]), :html=> { class: 'form-group' } do |f| %>
 
   <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <%= f.text_field :first_name, :class => "form-control" %>
 
   <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+  <%= f.text_field :last_name, :class => "form-control" %>
 
   <%= f.label :birthday %>
-  <%= f.datetime_select :birthday %>
+  <%= f.datetime_select :birthday, :class => "form-control" %>
 
   <%= f.label :start_date %>
-  <%= f.datetime_select :start_date, min: Date.today, :ampm => true, :minute_step => 15%>
+  <%= f.datetime_select :start_date, :class => "form-control" %>
 
   <%= f.label :end_date %>
-  <%= f.datetime_select :end_date, min: Date.today , :ampm => true, :minute_step => 15%>
+  <%= f.datetime_select :end_date, :class => "form-control" %>
 
   <%= f.submit 'See options!' %>
 
