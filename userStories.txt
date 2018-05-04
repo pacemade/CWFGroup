@@ -1,0 +1,8 @@
+1) Given the birthdate, it can calculate the age
+2) Given the start and end date of the vacation, it can determine the duration
+3) With the information of age entered by the user, the program should be able to search through at least three different data sets to find the price per a day.
+4) Using the price per day, it would multiple by the duration of the trip.
+5) The system should be able to display each price from each data set.
+6) under each result, there should be a button for the user to "buy", once clicked, the user would have  different fields to record name, BOD, trip start and end date, credit card info and etc.
+7) The information that the client enters must be recorded and be view-able from the back end.
+8) Each advisor from CWF Group should have their own referral url. If advisor A gives his url to his client (i.e., the user) the information that is recorded should show up that this data came from this advisor A.
