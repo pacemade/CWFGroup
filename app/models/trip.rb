@@ -12,7 +12,7 @@ class Trip < ApplicationRecord
   end
 
   def end_time_cannot_be_before_start
-    if self[:start_date] > self[:end_date]
+    if self[:start_date] && self[:end_date] && self[:start_date] > self[:end_date]
       errors.add(:_, "The end date cannot be before the start date. Please try again.")
     end
   end
