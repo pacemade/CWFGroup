@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507192816) do
+ActiveRecord::Schema.define(version: 20180507193612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,13 +24,15 @@ ActiveRecord::Schema.define(version: 20180507192816) do
   create_table "policies", force: :cascade do |t|
     t.integer "min_age"
     t.integer "max_age"
-    t.decimal "cov_10k", precision: 15, scale: 15
-    t.decimal "cov_25k", precision: 15, scale: 15
-    t.decimal "cov_50k", precision: 15, scale: 15
-    t.decimal "cov_75k", precision: 15, scale: 15
-    t.decimal "cov_100k", precision: 15, scale: 15
+    t.decimal "cov_10k", precision: 15, scale: 10
+    t.decimal "cov_25k", precision: 15, scale: 10
+    t.decimal "cov_50k", precision: 15, scale: 10
+    t.decimal "cov_75k", precision: 15, scale: 10
+    t.decimal "cov_100k", precision: 15, scale: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_policies_on_company_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -65,5 +67,6 @@ ActiveRecord::Schema.define(version: 20180507192816) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "policies", "companies"
   add_foreign_key "trips", "users"
 end
