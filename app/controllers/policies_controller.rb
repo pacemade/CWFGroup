@@ -4,6 +4,7 @@ class PoliciesController < ApplicationController
 
   def search_policies
     @policies = SearchPolicies.new(params).results
+    @coverage = params[:trip][:coverage]      
     render 'find_policies', layout: false
   end
 

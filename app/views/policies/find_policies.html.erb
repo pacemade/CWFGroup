@@ -1,3 +1,8 @@
 <h2>Policies go here!</h2>
 
-<%= @policy %>
+<% @policies.each do |policy| %>
+  <%= policy.company.name %>
+  <%= policy[@coverage] %>
+<% end %>
+
+<%= @coverage %>
