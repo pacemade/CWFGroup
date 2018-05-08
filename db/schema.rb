@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507200204) do
+ActiveRecord::Schema.define(version: 20180508145515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 20180507200204) do
   create_table "policies", force: :cascade do |t|
     t.integer "min_age"
     t.integer "max_age"
-    t.decimal "cov_10k", precision: 15, scale: 10
-    t.decimal "cov_25k", precision: 15, scale: 10
-    t.decimal "cov_50k", precision: 15, scale: 10
-    t.decimal "cov_75k", precision: 15, scale: 10
-    t.decimal "cov_100k", precision: 15, scale: 10
+    t.decimal "10,000", precision: 15, scale: 10
+    t.decimal "25,000", precision: 15, scale: 10
+    t.decimal "50,000", precision: 15, scale: 10
+    t.decimal "75,000", precision: 15, scale: 10
+    t.decimal "100,000", precision: 15, scale: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"

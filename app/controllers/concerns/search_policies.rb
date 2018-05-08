@@ -9,9 +9,6 @@ class SearchPolicies
     @results = Policy.where('min_age <= ? and max_age >= ?', @age, @age)
   end
 
-  def filter_by_coverage
-  end
-
   def convert_birthday
     trip = @params[:trip]
     @birthday = Date.new trip["birthday(1i)"].to_i, trip["birthday(2i)"].to_i, trip["birthday(3i)"].to_i
