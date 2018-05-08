@@ -1,8 +1,11 @@
 <h2>Policies go here!</h2>
 
-<% @policies.each do |policy| %>
-  <%= policy.company.name %>
-  <%= policy[@coverage] %>
-<% end %>
+<%= @days %>
 
-<%= @coverage %>
+<ul class="list-group">
+  <% @policies.each do |policy| %>
+    <li class="list-group-item"><%= policy.company.name %></li>
+    <li class="list-group-item"><%= policy[@coverage] %>%</li>
+    <li class="list-group-item"><input type="submit" value="Choose Plan" form="new_trip"></li>
+  <% end %>
+</ul>
