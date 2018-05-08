@@ -17,6 +17,7 @@ document.addEventListener("turbolinks:load", function() {
       .done(function(responseData) {
         console.log('works search!');
         resultsDiv.innerHTML = responseData;
+
       })
       .fail(ajaxFails)
     }

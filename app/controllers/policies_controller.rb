@@ -3,8 +3,11 @@ class PoliciesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def search_policies
+    @params = params
     @policies = SearchPolicies.new(params).results
     @coverage = params[:trip][:coverage]
+    convert_birthday
+    @age = age(@birthday)
     @days = trip_days(convert_end_date(params),convert_start_date(params) )
     render 'find_policies', layout: false
   end
@@ -25,5 +28,14 @@ class PoliciesController < ApplicationController
     (end_date - start_date).to_i
   end
 
+  def convert_birthday
+    trip = @params[:trip]
+    @birthday = Date.new trip["birthday(1i)"].to_i, trip["birthday(2i)"].to_i, trip["birthday(3i)"].to_i
+  end
+
+  def age(birthday)
+    now = Time.now.utc.to_date
+    now.year - @birthday.year - ((now.month > @birthday.month || (now.month == @birthday.month && now.day >= @birthday.day)) ? 0 : 1)
+  end
 
 end

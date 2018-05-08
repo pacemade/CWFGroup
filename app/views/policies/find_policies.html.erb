@@ -3,11 +3,11 @@
 
 
 <ul class="list-group">
-  <li class="list-group-item">Number of days travelling: <%= @days %></li>
+  <li class="list-group-item">Number of days travelling: <%= @days %> | Age: <%= @age %></li>
   <% @policies.each do |policy| %>
     <li class="list-group-item"><%= policy.company.name %></li>
     <li class="list-group-item">$<%= policy[@coverage].round(2) %> per day</li>
     <li class="list-group-item">$<%= (policy[@coverage]*@days).round(2) %> for <%= @days %> days</li>
-    <li class="list-group-item"><input type="submit" value="Choose Plan" form="new_trip"></li>
+    <li class="list-group-item"><input type="submit" value="Choose Plan" form="trip_save"></li>
   <% end %>
 </ul>

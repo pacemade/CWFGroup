@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508145515) do
+ActiveRecord::Schema.define(version: 20180508163156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20180508145515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "coverage"
+    t.integer "number_of_days"
+    t.decimal "rate_per_day", precision: 15, scale: 10
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
