@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :trips
   end
 
-  get '/policies/find_policies' => 'policies#find_policies'
+  post '/policies/search_policies' => 'policies#search_policies'
 
 end

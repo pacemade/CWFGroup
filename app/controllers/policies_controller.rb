@@ -1,7 +1,10 @@
 class PoliciesController < ApplicationController
-  layout false
+  require 'json'
+  skip_before_action :verify_authenticity_token
 
-  def index
+  def search_policies
+    @policies = SearchPolicies.new(params).results
+    render 'find_policies', layout: false
   end
 
 end
