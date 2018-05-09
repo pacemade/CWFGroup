@@ -1,3 +1,14 @@
 <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-
 <%= link_to 'Referral Link', new_user_trip_path(@user) %>
+
+<h3>Clients</h3>
+<ul>
+<% @trips.each do |trip| %>
+  <li><%= trip.first_name %> <%= trip.last_name %></li>
+  <li>Start Date: <%= trip.start_date.strftime("%B %d, %Y") %></li>
+  <li>End Date: <%= trip.end_date.strftime("%B %d, %Y") %></li>
+  <li>Number of days: <%= (trip.end_date - trip.start_date).to_i/1.day %></li>
+  <li>Company Policy: <%= trip.policy.company.name %></li>
+  <li>Coverage: $<%= trip.coverage %></li>
+<% end %>
+</ul>

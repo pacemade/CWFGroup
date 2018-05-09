@@ -1,6 +1,7 @@
 class Trip < ApplicationRecord
 
   belongs_to :user
+  belongs_to :policy
 
   validates :first_name, :last_name, :start_date, :end_date, :birthday, :coverage, presence: true
   validate :end_time_cannot_be_before_start

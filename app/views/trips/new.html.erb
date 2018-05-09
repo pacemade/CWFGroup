@@ -1,6 +1,8 @@
 <h2>Book A Trip</h2>
 
-<%= form_for ([@user, @trip]), url: policies_search_policies_path, method: 'post' do |f| %>
+
+<!-- , url: policies_search_policies_path, method: 'post' -->
+<%= form_for ([@user, @trip]) do |f| %>
 
   <div class="form-group row">
     <%= f.label :first_name %>
@@ -32,12 +34,9 @@
     <%= f.date_select :end_date, :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }, :order => [:day, :month, :year], :start_year=>Date.today.year, :end_year=>Date.today.year + 5, :class => "form-control" %>
   </div>
 
-
   <%= f.submit 'See options!', :class => "btn btn-primary", :id => "see_options", data: { disable_with: false } %>
 
+  <div id="coverage_results_container">
+  </div>
+
 <% end %>
-
-
-<div id="coverage_results_container">
-
-</div>

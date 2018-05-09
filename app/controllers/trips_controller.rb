@@ -6,9 +6,11 @@ class TripsController < ApplicationController
   end
 
   def create
+    @params = params
     @user = User.find(params[:user_id])
     @trip = Trip.new(trip_params)
     @trip.user = @user
+    @trip.policy = Policy.find(params[:policy])
 
     if @trip.save
       flash[:notice] = "Trip saved!"
@@ -22,7 +24,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:start_date, :end_date, :birthday, :first_name, :last_name, :coverage)
+    params.require(:trip).permit(:start_date, :end_date, :birthday, :first_name, :last_name, :coverage, :policy_id)
   end
 
 end

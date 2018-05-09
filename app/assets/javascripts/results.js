@@ -17,8 +17,6 @@ document.addEventListener("turbolinks:load", function() {
       .done(function(responseData) {
         console.log('works search!');
         resultsDiv.innerHTML = responseData;
-        var submitPolicy = document.querySelector('#see_me')
-        console.log(submitPolicy);
       })
       .fail(ajaxFails)
     }
@@ -28,8 +26,7 @@ document.addEventListener("turbolinks:load", function() {
     }
 
 // This does the actual search
-    new_trip.addEventListener('submit', searchPolicies)
-
+    see_options.addEventListener('click', searchPolicies)
 
 
 // Maybe dont need this?

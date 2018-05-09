@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508163156) do
+ActiveRecord::Schema.define(version: 20180509143000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20180508163156) do
     t.string "coverage"
     t.integer "number_of_days"
     t.decimal "rate_per_day", precision: 15, scale: 10
+    t.bigint "policy_id"
+    t.index ["policy_id"], name: "index_trips_on_policy_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
@@ -71,5 +73,6 @@ ActiveRecord::Schema.define(version: 20180508163156) do
   end
 
   add_foreign_key "policies", "companies"
+  add_foreign_key "trips", "policies"
   add_foreign_key "trips", "users"
 end
