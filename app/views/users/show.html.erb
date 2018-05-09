@@ -2,13 +2,15 @@
 <%= link_to 'Referral Link', new_user_trip_path(@user) %>
 
 <h3>Clients</h3>
-<ul>
+
 <% @trips.each do |trip| %>
-  <li><%= trip.first_name %> <%= trip.last_name %></li>
-  <li>Start Date: <%= trip.start_date.strftime("%B %d, %Y") %></li>
-  <li>End Date: <%= trip.end_date.strftime("%B %d, %Y") %></li>
-  <li>Number of days: <%= (trip.end_date - trip.start_date).to_i/1.day %></li>
-  <li>Company Policy: <%= trip.policy.company.name %></li>
-  <li>Coverage: $<%= trip.coverage %></li>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= trip.first_name %> <%= trip.last_name %></li>
+    <li class="list-group-item">Age: <%= find_age(trip.birthday) %></li>
+    <li class="list-group-item">Start Date: <%= trip.start_date.strftime("%B %d, %Y") %></li>
+    <li class="list-group-item">End Date: <%= trip.end_date.strftime("%B %d, %Y") %></li>
+    <li class="list-group-item">Number of days: <%= (trip.end_date - trip.start_date).to_i/1.day %></li>
+    <li class="list-group-item">Company Policy: <%= trip.policy.company.name %></li>
+    <li class="list-group-item">Coverage: $<%= trip.coverage %></li>
+  </ul>
 <% end %>
-</ul>
