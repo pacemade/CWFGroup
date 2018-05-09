@@ -6,7 +6,11 @@ class SearchPolicies
     @params = params
     convert_birthday
     @age = age(@birthday)
-    @results = Policy.where('min_age <= ? and max_age >= ?', @age, @age)
+    if @age <= 65
+      @results = Policy.where('min_age <= ? and max_age >= ?', @age, @age)
+    else
+      @results = Policy.where('max_age >= ?', 65)
+    end
   end
 
   def convert_birthday
