@@ -1,6 +1,5 @@
-<h2>Book A Trip</h2>
-
 <%= form_for ([@user, @trip]) do |f| %>
+  <h2 class="form-group row">Book A Trip</h2>
 
   <div class="form-group row">
     <%= f.label :first_name %>
@@ -32,7 +31,7 @@
     <%= f.date_select :end_date, :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }, :order => [:day, :month, :year], :start_year=>Date.today.year, :end_year=>Date.today.year + 5, :class => "form-control" %>
   </div>
 
-  <%= f.submit 'See options!', :class => "btn btn-primary", :id => "see_options", data: { disable_with: false } %>
+  <%= f.submit 'See options!', :class => "btn btn-primary form-group row", :id => "see_options", data: { disable_with: false } %>
 
   <div id="coverage_results_container">
   </div>
