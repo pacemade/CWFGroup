@@ -6,7 +6,7 @@
     <li class="list-group-item"><%= policy.company.name %></li>
     <li class="list-group-item">$<%= policy[@coverage].round(2) %> per day</li>
     <li class="list-group-item">$<%= (policy[@coverage]*@days).round(2) %> for <%= @days %> days</li>
-    <li class="list-group-item"><%= radio_button_tag(:policy, policy.id) %><%= label_tag(:policy, "Select" + " " + policy.company.name) %>
+    <li class="list-group-item"><%= radio_button_tag(:policy, [policy.id, policy[@coverage]]) %><%= label_tag(:policy, "Select" + " " + policy.company.name) %>
   <% end %>
   <li class="list-group-item"><input type="submit" value="Submit" form="new_trip"></li>
 </ul>

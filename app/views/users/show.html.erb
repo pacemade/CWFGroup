@@ -2,15 +2,16 @@
 <%= link_to 'Referral Link', new_user_trip_path(@user) %>
 
 <h3>Clients</h3>
-
 <% @trips.each do |trip| %>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><%= trip.first_name %> <%= trip.last_name %></li>
     <li class="list-group-item">Age: <%= find_age(trip.birthday) %></li>
     <li class="list-group-item">Start Date: <%= trip.start_date.strftime("%B %d, %Y") %></li>
     <li class="list-group-item">End Date: <%= trip.end_date.strftime("%B %d, %Y") %></li>
-    <li class="list-group-item">Number of days: <%= (trip.end_date - trip.start_date).to_i/1.day %></li>
+    <li class="list-group-item">Number of days: <%= find_days(trip.end_date, trip.start_date) %></li>
     <li class="list-group-item">Company Policy: <%= trip.policy.company.name %></li>
     <li class="list-group-item">Coverage: $<%= trip.coverage %></li>
+    <li class="list-group-item">Rate Per Day: $<%= trip.rate_per_day.round(2) %></li>
+    <li class="list-group-item">Rate Total: $<%= (trip.rate_per_day.round(2))*find_days(trip.end_date, trip.start_date) %></li>
   </ul>
 <% end %>

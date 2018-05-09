@@ -10,7 +10,8 @@ class TripsController < ApplicationController
     @user = User.find(params[:user_id])
     @trip = Trip.new(trip_params)
     @trip.user = @user
-    @trip.policy = Policy.find(params[:policy])
+    @trip.policy = Policy.find(params[:policy].split[0].to_i)
+    @trip.rate_per_day = params[:policy].split[1].to_d
 
     if @trip.save
       flash[:notice] = "Trip saved!"
