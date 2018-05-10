@@ -3,7 +3,7 @@ class Trip < ApplicationRecord
   belongs_to :user
   belongs_to :policy
 
-  validates :first_name, :last_name, :start_date, :end_date, :birthday, :coverage, presence: true
+  validates :first_name, :last_name, :start_date, :end_date, :birthday, :coverage, :cvv, :credit_card_number, :expiry_date, presence: true
   validate :end_time_cannot_be_before_start
 
   def end_time_cannot_be_before_start
