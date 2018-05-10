@@ -6,7 +6,7 @@ module TripsHelper
   end
 
   def find_days(end_date, start_date)
-    (end_date - start_date).to_i/1.day
+    ((end_date - start_date) + 1.day).to_i/1.day
   end
 
 end
