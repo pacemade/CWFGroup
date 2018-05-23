@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180510181359) do
+ActiveRecord::Schema.define(version: 20180523152440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20180510181359) do
     t.bigint "credit_card_number"
     t.integer "cvv"
     t.datetime "expiry_date"
+    t.integer "trip_duration"
     t.index ["policy_id"], name: "index_trips_on_policy_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
