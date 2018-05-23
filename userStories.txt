@@ -6,3 +6,129 @@
 6) under each result, there should be a button for the user to "buy", once clicked, the user would have  different fields to record name, BOD, trip start and end date, credit card info and etc.
 7) The information that the client enters must be recorded and be view-able from the back end.
 8) Each advisor from CWF Group should have their own referral url. If advisor A gives his url to his client (i.e., the user) the information that is recorded should show up that this data came from this advisor A.
+
+send email to admin -> when it is booked?
+use wordpress to deploy - > Using AWS
+easy way to edit rates -> perhaps a file uploader?
+head to CWGgroup.com -> travel insurance -> click on any (eg. manulife) -> play around
+
+
+Visitor
+--------
+Date of birthday
+Arrival Date
+Departure Date
+
+// If age is greater than 80, "please call" page
+
+Deductible (select from) [pay a larger lump sum in the beginning, rather than spread them out]
+// Negative or positive percentage
+Coming from (Countries)
+Trip interruption (yes/no)
+Primary residence in Canada (Select from provinces)
+
+"Disclaimer page"
+
+---Checkboxes---
+Coverage Eligibility
+// If unchecked, go to "please call"
+Pre-existing Conditions & Information is correct
+// If not all checked, show error
+
+"Credit Card Page"
+name
+address
+phone number
+email
+CC
+cvv
+expiry date
+
+"Plan selections page"
+
+"Last disclaimer page"
+
+"Person information Page"
+
+"Successfully Submitted!"
+
+// Email admin with this information
+
+
+
+Travel
+---------
+
+"Out of province Plans Page"
+
+Single emergency Medical
+Single trip all-inclusive
+Trip cancellation/interruption
+
+***special***
+Multi-trip Emergency Medical
+Multi-Trip All Inclusive
+// Only has single and couple
+
+
+"Preliminary information page"
+//if single plan
+Date of birthday
+Arrival Date
+Departure Date
+
+//if multi-plan
+Date of Birthday
+Arrive
+Duration (4, 10, 18, 30 days as radio buttons)
+
+"Coverage Type and DOB Page + Deductible"
+
+---single---
+DOB (already filled in)
+
+---couple---
+2x DOB (first already filled in)
+
+---family---
+// Based on the number of ADULTS in the family
+Number of travellers
+Number of dependant children/grand children
+Number of parents/grandparents (Max 4)
+Birthday of the oldest member
+// Children are not included
+
+Deductible Numbers (and rates)
+Primary residence in Canada (Only has Ontario)
+
+"Eligibility page"
+Coverage Eligibility
+// If unchecked, go to "please call"
+Pre-existing Conditions & Information is correct
+// If not all checked, show error
+
+"Plans 1,2,3 Page"
+
+"Disclaimer page"
+
+"Fill out person information page"
+
+Oldest is already filled out
+
+---additional trip information---
+City of Departure
+City of Destination
+
+---address in canada---
+// Required to fill
+Street Number/name
+Unit/apt#:
+City
+Postal Code
+Home Phone number
+Email address
+Province of Residence In Canada (greyed out Ontario)
+
+"Successfully Submitted!"
+
+// Email admin with this information
