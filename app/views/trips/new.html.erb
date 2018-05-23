@@ -70,7 +70,7 @@
 
   <div class="form-group row">
     <%= f.label :country_coming_from, "Coming From" %>
-    <%= f.select :coverage, options_for_select(["75", "100", "250", "500", "1000"]), :class => "form-control" %>
+    <%= f.country_select :coverage, :class => "form-control" %>
   </div>
 
 
