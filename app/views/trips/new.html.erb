@@ -1,16 +1,7 @@
 <%= form_for ([@user, @trip]) do |f| %>
   <h2 class="form-group row">Book A Trip</h2>
 
-  <%= render 'plans_step' %>
-
-  <%= render 'single_trip_plan_step', f: f %>
-
-  <%= render 'multi_trip_plan_step', f: f %>
-
-  <%= render 'deductible_step', f: f %>
-
-  <%= render 'eligibility_step', f: f %>
-
+  <%= render "#{@trip.current_step}_step", f: f %>
 
   <%= f.submit 'See options!', :class => "btn btn-primary form-group row", :id => "see_options", data: { disable_with: false } %>
 
