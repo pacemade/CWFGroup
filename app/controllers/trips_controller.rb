@@ -10,7 +10,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @trip.current_step = session[:trip_step]
     if params[:back_button]
-      @order.previous_step
+      @trip.previous_step
     else
       @trip.next_step
     end
