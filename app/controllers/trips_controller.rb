@@ -1,29 +1,41 @@
 class TripsController < ApplicationController
 
   def new
+    session[:trip_params] ||= {}
     @trip = Trip.new
     @user = User.find(params[:user_id])
+    @trip = Trip.new(session[:trip_params])
+    @trip.current_step = session[:trip_step]
   end
 
   def create
+    session[:trip_params].deep_merge!(params[:trip]) if params[:trip]
     @user = User.find(params[:user_id])
-    @trip = Trip.new(trip_params)
+    @trip = Trip.new(session[:trip_params])
     @trip.current_step = session[:trip_step]
-    if params[:back_button]
-      @trip.previous_step
+    # if @trip.valid?
+      if params[:back_button]
+        @trip.previous_step
+      elsif @trip.last_step?
+        @trip.user = @user
+        @trip.save
+      else
+        @trip.next_step
+        binding.pry
+      end
+      session[:trip_step] = @trip.current_step
+    # end
+    if @trip.new_record?
+      render 'new'
     else
-      @trip.next_step
+      session[:trip_step] = session[:trip_params] = nil
+      flash[:notice] = "Trip Submitted!"
+      render 'new'
     end
-    session[:trip_step] = @trip.current_step
-    render 'new'
+
   end
 
 
-  def trip_params
-    if params[:trip]
-      params.require(:trip).permit(:first_name, :last_name, :start_date, :end_date, :birthday, :coverage, :policy_id)
-    end
-  end
 
 end
 

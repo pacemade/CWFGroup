@@ -6,6 +6,8 @@ class Trip < ApplicationRecord
   # validates :first_name, :last_name, :start_date, :end_date, :birthday, :coverage, :cvv, :credit_card_number, :expiry_date, presence: true
   # validate :end_time_cannot_be_before_start
 
+  validate :birthday, :if => lambda { |o| o.current_step == 'single_trip_plan' }
+
   attr_writer :current_step
 
   def current_step
@@ -13,7 +15,7 @@ class Trip < ApplicationRecord
   end
 
   def steps
-    %w[plans single_trip_plan eligibility]
+    %w[plans single_trip_plan deductible eligibility]
   end
 
   def next_step
@@ -26,6 +28,10 @@ class Trip < ApplicationRecord
 
   def first_step?
     current_step == steps.first
+  end
+
+  def last_step?
+    current_step == steps.last
   end
 
 
