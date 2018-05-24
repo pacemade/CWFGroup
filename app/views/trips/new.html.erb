@@ -1,102 +1,15 @@
 <%= form_for ([@user, @trip]) do |f| %>
   <h2 class="form-group row">Book A Trip</h2>
 
+  <%= render 'plans_step' %>
 
-  <div class="form-group row">
-    <h2 class="form-group row">Choose Plan Page</h2>
-    <%= radio_button_tag(:plan, "Single emergency Medical") %>
-    <%= label_tag(:plan, "Single emergency Medical") %>
-  </div>
+  <%= render 'single_trip_plan_step', f: f %>
 
-  <div class="form-group row">
-    <%= radio_button_tag(:plan, "Single trip all-inclusive") %>
-    <%= label_tag(:plan, "Single trip all-inclusive") %>
-  </div>
+  <%= render 'multi_trip_plan_step', f: f %>
 
-  <div class="form-group row">
-    <%= radio_button_tag(:plan, "Trip cancellation/interruption") %>
-    <%= label_tag(:plan, "Trip cancellation/interruption") %>
-  </div>
+  <%= render 'deductible_step', f: f %>
 
-  <div class="form-group row">
-    <h3 class="form-group row">Special Plans</h3>
-    <%= radio_button_tag(:plan, "Multi-trip Emergency Medical") %>
-    <%= label_tag(:plan, "Multi-trip Emergency Medical") %>
-  </div>
-  <div class="form-group row">
-    <%= radio_button_tag(:plan, "Multi-Trip All Inclusive") %>
-    <%= label_tag(:plan, "Multi-Trip All Inclusive") %>
-    (*special // Only has single and couple)
-  </div>
-
-
-  <div class="form-group row">
-  <h2 class="form-group row">If Single Trip Plan</h2>
-    <%= f.label :birthday %>
-    <%= f.date_select :birthday, :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }, :order => [:day, :month, :year], :start_year=>Date.today.year,:end_year=>1900, :class => "form-control", :id => "birthday" %>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label :start_date, "Arrival" %>
-    <%= f.date_select :start_date, :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }, :order => [:day, :month, :year], :start_year=>Date.today.year, :end_year=>Date.today.year + 5, :class => "form-control" %>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label :end_date, "Departure" %>
-    <%= f.date_select :end_date, :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }, :order => [:day, :month, :year], :start_year=>Date.today.year, :end_year=>Date.today.year + 5, :class => "form-control" %>
-  </div>
-
-  <div class="form-group row">
-  <h2 class="form-group row">If Multi Trip Plan</h2>
-    <%= f.label :birthday %>
-    <%= f.date_select :birthday, :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }, :order => [:day, :month, :year], :start_year=>Date.today.year,:end_year=>1900, :class => "form-control", :id => "birthday" %>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label :start_date, "Arrival" %>
-    <%= f.date_select :start_date, :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }, :order => [:day, :month, :year], :start_year=>Date.today.year, :end_year=>Date.today.year + 5, :class => "form-control" %>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label :trip_duration, "Duration of Trips (Days)" %>
-    <%= f.select :trip_duration, options_for_select([4, 10, 18, 30]), :class => "form-control" %>
-  </div>
-
-  <div class="form-group row">
-    <h2 class="form-group row">Deductible Page</h2>
-    <%= f.label :deductible, "Deductible (CAD)" %>
-    <%= f.select :coverage, options_for_select(["75", "100", "250", "500", "1000"]), :class => "form-control" %>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label :coverage, "Coverage (CAD)" %>
-    <%= f.select :coverage, options_for_select(["10,000", "25,000", "50,000", "75,000", "100,000"]), :class => "form-control" %>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label :country_coming_from, "Coming From" %>
-    <%= country_select :country_coming_from, :class => "form-control" %>
-  </div>
-
-  <div class="form-group row">
-    <%= label_tag :trip_interruption, "Trip Interruption" %>
-    <%= check_box_tag :trip_interruption %>
-  </div>
-
-  <div class="form-group row">
-    <%= label_tag :primary_residence %>
-    <%= select_tag :primary_residence, options_for_select(["Ontario"]), {:disabled => true}  %>
-  </div>
-
-
-  <div class="form-group row">
-    <h2 class="">Eligibility Page</h2>
-    <p>Bacon ipsum dolor amet chicken hamburger bresaola, tail salami short loin brisket kielbasa turkey beef ribs fatback picanha. Prosciutto ham hock porchetta t-bone landjaeger short ribs. Chuck doner meatloaf, ground round cow short loin biltong. Tail pork chop chicken pastrami, swine beef frankfurter hamburger turducken sirloin biltong tongue shoulder salami alcatra. Ribeye strip steak filet mignon rump prosciutto salami pork loin, andouille buffalo tri-tip short ribs chicken frankfurter. Pork loin ham beef ribs pastrami corned beef hamburger alcatra tongue burgdoggen.</p>
-    <%= label_tag :eligibility, "I am eligible" %>
-    <%= check_box_tag :eligibility %>
-  </div>
-
-
+  <%= render 'eligibility_step', f: f %>
 
 
   <%= f.submit 'See options!', :class => "btn btn-primary form-group row", :id => "see_options", data: { disable_with: false } %>

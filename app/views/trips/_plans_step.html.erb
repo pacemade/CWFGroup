@@ -1,0 +1,26 @@
+<div class="form-group row">
+  <h2 class="form-group row">Choose Plan Page</h2>
+  <%= radio_button_tag(:plan, "Single emergency Medical") %>
+  <%= label_tag(:plan, "Single emergency Medical") %>
+</div>
+
+<div class="form-group row">
+  <%= radio_button_tag(:plan, "Single trip all-inclusive") %>
+  <%= label_tag(:plan, "Single trip all-inclusive") %>
+</div>
+
+<div class="form-group row">
+  <%= radio_button_tag(:plan, "Trip cancellation/interruption") %>
+  <%= label_tag(:plan, "Trip cancellation/interruption") %>
+</div>
+
+<div class="form-group row">
+  <h3 class="form-group row">Special Plans</h3>
+  <%= radio_button_tag(:plan, "Multi-trip Emergency Medical") %>
+  <%= label_tag(:plan, "Multi-trip Emergency Medical") %>
+</div>
+<div class="form-group row">
+  <%= radio_button_tag(:plan, "Multi-Trip All Inclusive") %>
+  <%= label_tag(:plan, "Multi-Trip All Inclusive") %>
+  (*special // Only has single and couple)
+</div>

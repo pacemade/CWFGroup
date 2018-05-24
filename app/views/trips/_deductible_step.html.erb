@@ -1,0 +1,25 @@
+<div class="form-group row">
+  <h2 class="form-group row">Deductible Page</h2>
+  <%= f.label :deductible, "Deductible (CAD)" %>
+  <%= f.select :coverage, options_for_select(["75", "100", "250", "500", "1000"]), :class => "form-control" %>
+</div>
+
+<div class="form-group row">
+  <%= f.label :coverage, "Coverage (CAD)" %>
+  <%= f.select :coverage, options_for_select(["10,000", "25,000", "50,000", "75,000", "100,000"]), :class => "form-control" %>
+</div>
+
+<div class="form-group row">
+  <%= f.label :country_coming_from, "Coming From" %>
+  <%= country_select :country_coming_from, :class => "form-control" %>
+</div>
+
+<div class="form-group row">
+  <%= label_tag :trip_interruption, "Trip Interruption" %>
+  <%= check_box_tag :trip_interruption %>
+</div>
+
+<div class="form-group row">
+  <%= label_tag :primary_residence %>
+  <%= select_tag :primary_residence, options_for_select(["Ontario"]), {:disabled => true}  %>
+</div>
