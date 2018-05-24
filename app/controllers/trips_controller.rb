@@ -7,7 +7,7 @@ class TripsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @trip = Trip.new(params[:trip])
+    @trip = Trip.new(trip_params)
     @trip.current_step = session[:trip_step]
     @trip.next_step
     session[:trip_step] = @trip.current_step
@@ -19,7 +19,9 @@ class TripsController < ApplicationController
 
 
   def trip_params
-    params.require(:trip).permit(:first_name, :last_name, :start_date, :end_date, :birthday, :coverage, :policy_id)
+    if params[:trip]
+      params.require(:trip).permit(:first_name, :last_name, :start_date, :end_date, :birthday, :coverage, :policy_id)
+    end
   end
 
 end
