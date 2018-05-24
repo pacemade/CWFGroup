@@ -3,7 +3,9 @@
 
   <%= render "#{@trip.current_step}_step", f: f %>
 
-  <%= f.submit 'See options!', :class => "btn btn-primary form-group row", :id => "see_options", data: { disable_with: false } %>
+  <%= f.submit 'Back', :class => "btn btn-primary", :name => "back_button" unless @trip.first_step? %>
+
+  <%= f.submit 'Continue', :class => "btn btn-primary", :name => "continue_button", data: { disable_with: false } %>
 
   <div id="coverage_results_container">
   </div>

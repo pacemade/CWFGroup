@@ -9,13 +9,14 @@ class TripsController < ApplicationController
     @user = User.find(params[:user_id])
     @trip = Trip.new(trip_params)
     @trip.current_step = session[:trip_step]
-    @trip.next_step
+    if params[:back_button]
+      @order.previous_step
+    else
+      @trip.next_step
+    end
     session[:trip_step] = @trip.current_step
     render 'new'
   end
-
-
-
 
 
   def trip_params
