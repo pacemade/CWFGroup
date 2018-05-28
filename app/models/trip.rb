@@ -15,7 +15,7 @@ class Trip < ApplicationRecord
   end
 
   def steps
-    %w[plans single_trip_plan deductible eligibility]
+    %w[plans single_trip_plan deductible eligibility find_policies]
   end
 
   def next_step
@@ -24,6 +24,10 @@ class Trip < ApplicationRecord
 
   def previous_step
     self.current_step = steps[steps.index(current_step)-1]
+  end
+
+  def eligibility_step?
+    current_step == steps[3]
   end
 
   def first_step?

@@ -21,7 +21,6 @@ class TripsController < ApplicationController
         @trip.save
       else
         @trip.next_step
-        binding.pry
       end
       session[:trip_step] = @trip.current_step
     # end

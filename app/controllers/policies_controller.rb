@@ -3,9 +3,9 @@ class PoliciesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def search_policies
-    @params = params
-    @policies = SearchPolicies.new(params).results
-    @coverage = params[:trip][:coverage]
+    @params = session[:trip_params]
+    @policies = SearchPolicies.new(@params).results
+    @coverage = session[:trip_params][:coverage]
     convert_birthday
     @age = age(@birthday)
     @days = trip_days(convert_end_date(params),convert_start_date(params) )
