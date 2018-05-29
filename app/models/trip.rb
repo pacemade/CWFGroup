@@ -15,7 +15,7 @@ class Trip < ApplicationRecord
   end
 
   def steps
-    %w[plans single_trip_plan deductible eligibility find_policies]
+    %w[plans single_trip_plan deductible eligibility policy_results credit_card]
   end
 
   def next_step

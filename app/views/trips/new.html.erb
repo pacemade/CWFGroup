@@ -5,13 +5,6 @@
 
   <%= f.submit 'Back', :class => "btn btn-primary", :name => "back_button" unless @trip.first_step? %>
 
-  <%= f.submit 'Continue', :class => "btn btn-primary", :name => "continue_button" unless @trip.eligibility_step? %>
-
-  <% if @trip.eligibility_step? %>
-    <%= f.submit 'See Plans', :class => "btn btn-primary", :name => "continue_button" %>
-  <% end %>
-
-  <div id="coverage_results_container">
-  </div>
+  <%= f.submit 'Continue', :class => "btn btn-primary", :name => "continue_button" %>
 
 <% end %>

@@ -3,6 +3,7 @@ class SearchPolicies
   attr_reader :results
 
   def initialize(params)
+
     @params = params
     convert_birthday
     @age = age(@birthday)
@@ -14,8 +15,7 @@ class SearchPolicies
   end
 
   def convert_birthday
-    trip = @params[:trip]
-    @birthday = Date.new trip["birthday(1i)"].to_i, trip["birthday(2i)"].to_i, trip["birthday(3i)"].to_i
+    @birthday = Date.new @params["birthday(1i)"].to_i, @params["birthday(2i)"].to_i, @params["birthday(3i)"].to_i
   end
 
   def age(birthday)

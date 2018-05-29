@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
 
+
   def new
     session[:trip_params] ||= {}
     @trip = Trip.new
@@ -19,6 +20,8 @@ class TripsController < ApplicationController
       elsif @trip.last_step?
         @trip.user = @user
         @trip.save
+      elsif @trip.current_step == "eligibility"
+        search_policies
       else
         @trip.next_step
       end
@@ -31,10 +34,40 @@ class TripsController < ApplicationController
       flash[:notice] = "Trip Submitted!"
       render 'new'
     end
-
   end
 
+  def search_policies
+    @params = session[:trip_params]
+    @policies = SearchPolicies.new(@params).results
+    @coverage = @params["coverage"]
+    convert_birthday
+    @age = age(@birthday)
+    @days = trip_days(convert_end_date(params),convert_start_date(params) )
+    @trip.next_step
+  end
 
+  private
+
+  def convert_start_date(params)
+    @start_date = Date.new @params["start_date(1i)"].to_i, @params["start_date(2i)"].to_i, @params["start_date(3i)"].to_i
+  end
+
+  def convert_end_date(params)
+    @end_date = Date.new @params["end_date(1i)"].to_i, @params["end_date(2i)"].to_i, @params["end_date(3i)"].to_i
+  end
+
+  def trip_days(end_date, start_date)
+    (end_date - start_date).to_i
+  end
+
+  def convert_birthday
+    @birthday = Date.new @params["birthday(1i)"].to_i, @params["birthday(2i)"].to_i, @params["birthday(3i)"].to_i
+  end
+
+  def age(birthday)
+    now = Time.now.utc.to_date
+    now.year - @birthday.year - ((now.month > @birthday.month || (now.month == @birthday.month && now.day >= @birthday.day)) ? 0 : 1)
+  end
 
 end
 
