@@ -1,4 +1,4 @@
-1) Given the birthdate, it can calculate the age
+\1) Given the birthdate, it can calculate the age
 2) Given the start and end date of the vacation, it can determine the duration
 3) With the information of age entered by the user, the program should be able to search through at least three different data sets to find the price per a day.
 4) Using the price per day, it would multiple by the duration of the trip.
@@ -132,3 +132,11 @@ Province of Residence In Canada (greyed out Ontario)
 "Successfully Submitted!"
 
 // Email admin with this information
+
+
+
+
+healthquotes.ca // Large clientbase
+21safety.ca
+
+language toggle - for chinese

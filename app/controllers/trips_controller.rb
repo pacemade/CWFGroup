@@ -15,13 +15,16 @@ class TripsController < ApplicationController
     @trip = Trip.new(session[:trip_params])
     @trip.current_step = session[:trip_step]
     # if @trip.valid?
-      if params[:back_button]
+      if @trip.next_step == "policy_results"
+        search_policies
+      elsif @trip.previous_step == "policy_results" && params[:back_button]
+        search_policies
+        @trip.previous_step
+      elsif params[:back_button]
         @trip.previous_step
       elsif @trip.last_step?
         @trip.user = @user
         @trip.save
-      elsif @trip.current_step == "eligibility"
-        search_policies
       else
         @trip.next_step
       end
@@ -42,8 +45,7 @@ class TripsController < ApplicationController
     @coverage = @params["coverage"]
     convert_birthday
     @age = age(@birthday)
-    @days = trip_days(convert_end_date(params),convert_start_date(params) )
-    @trip.next_step
+    @days = trip_days(convert_end_date(params),convert_start_date(params))
   end
 
   private
